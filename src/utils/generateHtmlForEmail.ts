@@ -24,7 +24,7 @@ export const generateHtmlForEmail = ({ emailType, token, }: {
             </p>
             <hr style="margin-top: 30px; border: none; border-top: 1px solid #eeeeee;" />
             <p style="font-size: 12px; color: #bbbbbb; text-align: center;">
-                &copy; ${new Date().getFullYear()} YourAppName. All rights reserved.
+                &copy; ${new Date().getFullYear()} Nextjs Auth. All rights reserved.
             </p>
         </div>
     `;

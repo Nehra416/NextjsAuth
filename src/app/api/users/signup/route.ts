@@ -10,9 +10,11 @@ dbConnection();
 export async function POST(request: NextRequest) {
     try {
         const reqBody = await request.json();
-        console.log("reqBody is: ", reqBody);
+        // console.log("reqBody is: ", reqBody);
 
         const { username, email, password } = reqBody;
+
+        // Skip validation for now ---
 
         // Check if user already created or not on this email
         const user = await User.findOne({ email });
@@ -31,7 +33,10 @@ export async function POST(request: NextRequest) {
             password: hashPassword
         })
         const savedUser = await newUser.save();
-        console.log(" is: ", savedUser);
+
+        // Send user obj without pwd
+        const obj = savedUser.toObject();
+        delete obj.password;
 
         // Send Verification email
         await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
@@ -40,7 +45,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
             success: true,
             message: "User register Successfully",
-            savedUser
+            savedUser: obj
         })
 
     } catch (error: any) {

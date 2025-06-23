@@ -37,7 +37,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         });
 
         const mailOptions = {
-            from: `"Nextjs Support" <support@nextjs.com>`, // Fake email for now
+            from: `nehra@xyz.com`, // Fake email for now
             to: email,
             subject: emailType === "VERIFY" ? "Verify your email" : "Reset your password",
             text: `Please go to this link: ${htmlContent}`, // fallback
